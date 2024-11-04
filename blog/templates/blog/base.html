@@ -1,0 +1,42 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WordFlow</title>
+{#    <link rel="stylesheet" href="{% static 'css/styles.css' %}">#}
+</head>
+<body>
+    <header>
+        <h1>Welcome to WordFlow</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'post_list' %}">Posts</a></li>
+                <li><a href="{% url 'add_post' %}">Add Post</a></li>
+                <li><a href="{% url 'profile' %}">Profile</a></li>
+                
+            </ul>
+        </nav>
+            <form method="POST" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit" style="background:none; border:none; color:blue; cursor:pointer;">Logout</button>
+</form>
+        <!-- Search Form -->
+        <form method="GET" action="{% url 'post_list' %}" style="margin-top: 10px;">
+            <input type="text" name="q" placeholder="Search posts..." value="{{ request.GET.q }}">
+            <button type="submit">Search</button>
+        </form>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 WordFlow. All rights reserved.</p>
+    </footer>
+</body>
+</html>

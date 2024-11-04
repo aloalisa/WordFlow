@@ -1,0 +1,12 @@
+<!-- profile.html -->
+{% extends "blog/base.html" %}
+
+{% block content %}
+<h1>Your Profile</h1>
+<p>Welcome, {{ user.username }}!</p>
+<!-- Add more profile information here -->
+    <p>Check out the <a href="{% url 'post_list' %}">list of posts</a>.</p>
+    <a href="{% url 'add_post' %}">Add New Post</a>
+
+
+{% endblock %}
